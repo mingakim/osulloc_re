@@ -1,0 +1,209 @@
+@font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 100;
+    font-style: normal;
+    src: url(/font/SpoqaHanSansNeo-Thin.ttf);
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 200;
+    font-style: normal;
+    src: url(/font/SpoqaHanSansNeo-Light.ttf);
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 300;
+    font-style: normal;
+    src: url(/font/SpoqaHanSansNeo-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 400;
+    font-style: normal;
+    src: url(/font/SpoqaHanSansNeo-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 500;
+    font-style: normal;
+    src: url(/font/SpoqaHanSansNeo-Bold.ttf);
+}
+
+/* 노말라이즈 */
+body,ul,li,p,span {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+
+/* 공통 */
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Spoqa Han Sans Neo';
+    max-width: 100vw;
+    word-break: keep-all;    
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+
+/* 변수 */
+:root {
+    --black-bg: #222;
+    --text-black: #2c2c2c;
+    --bg: #F7F4EF;
+    --txt: #6B6966;
+    --green: #C3CEB7;  
+}
+
+
+/* 커스텀 */
+
+/* header 시작 */
+header {
+    position: relative;
+    z-index: 100;
+}
+
+/* h-top 시작 */
+header .h-top {
+    width: 100%;
+    height: 30px;
+    background-color: var(--black-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+        color: #fff;
+        font-size: 13px;
+        font-weight: 200;
+    }
+}
+/* h-top 끝 */
+
+/* h-main 시작 */
+header .h-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding-inline: 50px;
+    position: relative;  
+}
+
+header .h-main .logo {
+    width: 154px;
+}
+
+header .h-main .gnb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+header .h-main .gnb ul {
+    display: flex;
+    gap: 60px;
+}
+
+header .h-main .gnb ul a {
+    color: var(--text-black);
+    font-weight: 400;
+}
+
+header .h-main .icons {
+    display: flex;
+    gap: 20px;
+}
+
+header .h-main .icons a {
+    width: 40px;
+    height: 40px;
+}
+
+.h-main.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+/* h-main 끝 */
+/* header 끝 */
+
+
+/* video시작 */
+.video {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.video .video-box {   
+    position: relative;  
+    width: 100%;
+    height: 100%;  
+    padding-bottom: 73%;
+}
+
+.video .video-box iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.video .title {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    color: var(--bg);
+}
+
+.video .title span {
+    font-size: 80px;
+    font-weight: 400;    
+}
+
+.video .title p {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.7; 
+    text-align: center;
+    margin-top: 42px;   
+}
+/* video 끝 */
+
+/* section-1 시작 */
+.sec-1 {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    background-color: var(--bg);
+}
+/* section-1끝 */
