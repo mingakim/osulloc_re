@@ -7,16 +7,33 @@
 
     <link rel="stylesheet" href="style.css">
 
+    
     <!-- 제이쿼리 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- video -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
 
-    <script src="script.js"></script>
+    <!-- 스와이퍼 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- scrollbar -->    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.8.4/smooth-scrollbar.js"></script>
+
+    <!-- gsap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="script.js" defer></script>
 </head>
 <body>
     <!------------ 헤더 시작 ------------>
     <header>
         <div class="h-top">
-            <span>출석체크 이벤트</span>
+            <a href="#">
+                <span>출석체크 이벤트</span>
+            </a>            
         </div>
 
         <div class="h-main">
@@ -51,30 +68,244 @@
     </header>
     <!------------ 헤더 끝 ------------>
 
-    <!------------ video 시작------------>
-    <div class="video">
-        <div class="video-box">
-            <iframe src="https://player.vimeo.com/video/709357001?color=ffffff&title=0&byline=0&portrait=0&background=1&muted=1&autopause=1#t=0s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>   
-        
-        <div class="title">
-            <span>TEA FROM JEJU</span>
-            <p>
-                대한민국이 가진 천혜의 자연 유산 제주,
-                <br> 
-                화산섬 제주가 가진 경이로운 생명력으로 오설록의 차는 탄생합니다.
-            </p>
+
+    <div class="scroller" data-scrollbar="true">        
+
+        <!------------ video 시작------------>
+        <div class="video">
+            <div class="video-box">
+                <img src="/오설록images/썸네일.webp" alt="" class="thumbnail">
+                <iframe id="vimeoVideo" src="https://player.vimeo.com/video/709357001?color=ffffff&title=0&byline=0&portrait=0&background=1&muted=1&autopause=1#t=0s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>   
+            
+            <div class="title">
+                <span>TEA FROM JEJU</span>
+                <p>
+                    <span>대</span>
+                    <span>한</span>
+                    <span>민</span>
+                    <span>구</span>
+                    <span>이</span>
+                    &nbsp;
+                    <span>가</span>
+                    <span>진</span>
+                    &nbsp;
+                    <span>천</span>
+                    <span>혜</span>
+                    <span>의</span>
+                    &nbsp;
+                    <span>자</span>
+                    <span>연</span>
+                    &nbsp;
+                    <span>유</span>
+                    <span>산</span>
+                    &nbsp;
+                    <span>제</span>
+                    <span>주,</span> 
+                    <br>
+                    <span>화</span>
+                    <span>산</span>
+                    <span>섬</span>
+                    &nbsp;
+                    <span>제</span>
+                    <span>주</span>
+                    <span>가</span>
+                    &nbsp;
+                    <span>가</span>
+                    <span>진</span>
+                    &nbsp;
+                    <span>경</span>
+                    <span>이</span>
+                    <span>로</span>
+                    <span>운</span>
+                    &nbsp;
+                    <span>생</span>
+                    <span>명</span>
+                    <span>력</span>
+                    <span>으</span> 
+                    <span>로</span>
+                    &nbsp; 
+                    <span>오</span> 
+                    <span>설</span> 
+                    <span>록</span> 
+                    <span>의</span>
+                    &nbsp;  
+                    <span>차</span> 
+                    <span>는</span>
+                    &nbsp;  
+                    <span>탄</span> 
+                    <span>생</span> 
+                    <span>합</span> 
+                    <span>니</span>
+                    <span>다.</span> 
+                    <!-- 대한민국이 가진 천혜의 자연 유산 제주,
+                    <br> 
+                    화산섬 제주가 가진 경이로운 생명력으로 오설록의 차는 탄생합니다. -->
+                </p>
+            </div>
         </div>
+        <!------------ video 끝------------>
+
+        <!------------ section-1 시작------------>
+        <section class="sec-1">
+            <h1>
+                TEA FROM JEJU
+            </h1>
+
+            <div class="fromJeju-swiper swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slide-1">
+                        <div class="left">
+                            <div class="top">
+                                <h3 class="title">
+                                    제주의 거친 바람
+                                </h3>
+
+                                <span class="sub">
+                                    연평균 초속 4~7m
+                                </span>
+                            </div>
+                            <div class="bottom">
+                                거친 제주의 바람이지만 실은 차 재배에는 더 없이
+                                <br>
+                                소중한 제주의 바람입니다. 
+                                <br>
+                                남쪽의 먼 바다에서 연평균 초속 4~7m의 거센 바람이 불어와
+                                <br> 
+                                뿌리의 수분 흡수를 증가시켜 차의 향기를 짙게 만들고, 
+                                <br>
+                                찻잎의 불순물을 씻어내는 에어워셔의 효과로 
+                                <br>
+                                제주 차만의 특별함을 더합니다.
+                            </div>
+                        </div>
+
+                        <div class="right">
+                            <img src="/오설록images/거친바람.webp" alt="">
+                            <img class="icon" src="/오설록images/sec1_icon_1.webp" alt="">
+                        </div>
+                    </div>       
+                    <div class="swiper-slide slide-2">
+                        <div class="left">
+                            <div class="top">
+                                <h3 class="title">
+                                    청정 화산 암반수
+                                </h3>
+
+                                <span class="sub">
+                                    1,800mm 빗물의 천연필터
+                                </span>
+                            </div>
+                            <div class="bottom">
+                                천연 필터 역할을 하는 화산 토양으로 더욱 깨끗한 
+                                <br>
+                                제주 암반수는 차 나무가 건강하게 자라기 위한 
+                                <br>
+                                더없이 좋은 자연의 선물입니다.
+                            </div>
+                        </div>
+
+                        <div class="right">
+                            <img src="/오설록images/암반수.webp" alt="">
+                            <img class="icon" src="/오설록images/sec1_icon_2.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide slide-3">
+                        <div class="left">
+                            <div class="top">
+                                <h3 class="title">
+                                    아열대 기후의 화산섬
+                                </h3>
+
+                                <span class="sub">
+                                    연평균 기온 16도씨
+                                </span>
+                            </div>
+                            <div class="bottom">
+                                제주 차밭은 화산섬이 만든 완만한 지형의 고저로 인해
+                                <br>
+                                식물 에너지의 근원인 태양을 한껏 끌어안습니다.  
+                                <br>
+                                사계절 내내 쏟아지는 따뜻한 빛은 
+                                <br>
+                                연 평균 기온을 14~16℃로 유지해
+                                <br>
+                                차가 건강하게 자랄 수 있는 온도를 제공합니다.
+                            </div>
+                        </div>
+
+                        <div class="right">
+                            <img src="/오설록images/화산섬.webp" alt="">
+                            <img class="icon" src="/오설록images/sec1_icon_3.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide slide-4">
+                        <div class="left">
+                            <div class="top">
+                                <h3 class="title">
+                                    한라산이 빚은 안개
+                                </h3>
+
+                                <span class="sub">
+                                    연평균 해무 발생일수 25일
+                                </span>
+                            </div>
+                            <div class="bottom">
+                                해발 1,950m, 화산섬에 우뚝 솟은 한라산은 
+                                <br>
+                                중산간에 급격한 온도차를 만들어 독특한 
+                                <br>
+                                구름대와 안개를 형성합니다.   
+                                <br>
+                                사방의 바다로 생성된 해무 발생일수도 연평균 25일에 달해,  
+                                <br>
+                                자연이 빚은 차광재인 안개가 최적의 그늘을 선사합니다.
+                            </div>
+                        </div>
+
+                        <div class="right">
+                            <img src="/오설록images/안개.webp" alt="">
+                            <img class="icon" src="/오설록images/sec1_icon_4.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-slide slide-5">
+                        <div class="left">
+                            <div class="top">
+                                <h3 class="title">
+                                    생명을 품은 화산섬의 흙
+                                </h3>
+
+                                <span class="sub">
+                                    최대 공극률 75%
+                                </span>
+                            </div>
+                            <div class="bottom">
+                                제주의 흙은 전 세계적으로도 손꼽히는 공극률로  
+                                <br>
+                                물과 공기의 흐름을 원활하게 하고 
+                                <br>
+                                일반 토양보다 10배나 높은 유기물을 함유하고 있습니다.
+                                <br>
+                                다공성 제주 현무암의 미세한 틈은 
+                                <br>
+                                차나무를 건강하게 유지하여  
+                                <br>
+                                제주차만의 차이를 만들어 냅니다.
+                            </div>
+                        </div>
+
+                        <div class="right">
+                            <img src="/오설록images/흙.webp" alt="">
+                            <img class="icon" src="/오설록images/sec1_icon_5.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <!------------ section-1 끝------------>
     </div>
-    <!------------ video 끝------------>
-
-    <!------------ section-1 시작------------>
-    <section class="sec-1">
-        dfsfe
-    </section>
-
-    <!------------ section-1 끝------------>
-
-    
 </body>
 </html>

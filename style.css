@@ -34,7 +34,7 @@
 }
 
 /* 노말라이즈 */
-body,ul,li,p,span {
+body,ul,li,p,span,h1,h2,h3 {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -55,6 +55,7 @@ a {
 body {
     font-family: 'Spoqa Han Sans Neo';
     max-width: 100vw;
+    overflow: hidden;
     word-break: keep-all;    
 }
 
@@ -77,12 +78,21 @@ img {
 }
 
 
-/* 커스텀 */
 
+
+/* 커스텀 */
 /* header 시작 */
 header {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 100;
+    transition: top .3s ease-in-out;
+}
+
+header.up {
+    top: -30px;
 }
 
 /* h-top 시작 */
@@ -90,26 +100,35 @@ header .h-top {
     width: 100%;
     height: 30px;
     background-color: var(--black-bg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    span {
-        color: #fff;
-        font-size: 13px;
-        font-weight: 200;
-    }
+    a {
+        width: 100%;
+        height: 100%;        
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+    }  
 }
+
+header .h-top span {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 200;
+}
+
+
 /* h-top 끝 */
 
 /* h-main 시작 */
 header .h-main {
+    width: 100%;  
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 70px;
     padding-inline: 50px;
-    position: relative;  
+    position: relative;
 }
+
 
 header .h-main .logo {
     width: 154px;
@@ -142,23 +161,33 @@ header .h-main .icons a {
     height: 40px;
 }
 
-.h-main.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+header .h-main .icons .menu-bar {
+    cursor: pointer;
+}
+
+header.up .h-main {
+    background-image: linear-gradient(to bottom, rgba(244, 247, 239, 0.7), transparent);;
 }
 /* h-main 끝 */
 /* header 끝 */
 
 
+
+.scroller {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden !important; 
+}
+
 /* video시작 */
-.video {
-    position: relative;
-    top: 0;
-    left: 0;
+.video {    
     width: 100%;
     height: 100vh;
+    overflow: hidden;    
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .video .video-box {   
@@ -166,8 +195,10 @@ header .h-main .icons a {
     width: 100%;
     height: 100%;  
     padding-bottom: 73%;
+    overflow: hidden;  
 }
 
+.video .video-box .thumbnail,
 .video .video-box iframe {
     position: absolute;
     top: 0;
@@ -177,13 +208,23 @@ header .h-main .icons a {
     height: 100%;
 }
 
+.video .video-box .thumbnail {
+    z-index: 2;
+    transition: opacity .3s ease;
+}
+
+.video .video-box iframe {
+    z-index: 1;
+}
+
 .video .title {
     position: absolute;
-    top: 65%;
+    top: 60vh;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 30;
     color: var(--bg);
+    text-align: center;
 }
 
 .video .title span {
@@ -191,12 +232,15 @@ header .h-main .icons a {
     font-weight: 400;    
 }
 
-.video .title p {
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 1.7; 
+.video .title p {    
     text-align: center;
     margin-top: 42px;   
+    span {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 1.7; 
+        opacity: 0;
+    }
 }
 /* video 끝 */
 
@@ -205,5 +249,137 @@ header .h-main .icons a {
     padding-top: 200px;
     padding-bottom: 200px;
     background-color: var(--bg);
+    text-align: center;
+}
+
+.sec-1 h1 {
+    font-size: 50px;
+    font-weight: 400;
+    color: var(--txt);
+    margin-bottom: 130px;
+}
+
+.sec-1 .swiper {
+    width: 940px;
+    margin: 0 auto;
+}
+
+.sec-1 .swiper .swiper-slide {
+    display: flex;    
+    justify-content: space-between;
+}
+
+.sec-1 .swiper .slide-1 {
+    color: #717E8F;
+}
+
+.sec-1 .swiper .slide-2 {
+    color: #5181AE;
+}
+
+.sec-1 .swiper .slide-3 {
+    color: #5F6F55;
+}
+
+.sec-1 .swiper .slide-4 {
+    color: #75828E;
+}
+
+.sec-1 .swiper .slide-5 {
+    color: #82664F;
+}
+
+.sec-1 .swiper .swiper-slide .left {
+    max-width: 450px;
+}
+
+.sec-1 .swiper .swiper-slide .left .top .title {
+    font-size: 34px;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.sec-1 .swiper .swiper-slide .left .top .sub {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.sec-1 .swiper .swiper-slide .left .bottom {
+    margin-top: 60px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 2;
+}
+
+.sec-1 .swiper .swiper-slide .right {
+    max-width: 350px;
+    max-height: 350px;
+    border-radius: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.sec-1 .swiper .swiper-slide .right .icon {
+    position: absolute;
+    bottom: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+}
+
+.sec-1 .swiper .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 104px;
+    margin-top: 100px;
+    position: relative;
+    z-index: 10;
+}
+
+.sec-1 .swiper .swiper-pagination span {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    overflow: hidden;
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
+}
+
+.sec-1 .swiper .swiper-pagination img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.sec-1 .swiper .swiper-pagination .swiper-pagination-bullet {
+    background: none;
+}
+
+.sec-1 .swiper .swiper-pagination .swiper-pagination-bullet-active {
+    opacity: 1; 
+}
+
+.sec-1 .swiper .swiper-pagination .swiper-pagination-bullet-1 {
+    background-color: #717E8F;
+}
+
+.sec-1 .swiper .swiper-pagination .swiper-pagination-bullet-2 {
+    background-color: #5181AE;
+}
+
+.sec-1 .swiper .swiper-pagination .swiper-pagination-bullet-3 {
+    background-color: #5F6F55;
+}
+
+.sec-1 .swiper .swiper-pagination .swiper-pagination-bullet-4 {
+    background-color: #75828E;
+}
+
+.sec-1 .swiper .swiper-pagination .swiper-pagination-bullet-5 {
+    background-color: #82664F;
 }
 /* section-1끝 */
