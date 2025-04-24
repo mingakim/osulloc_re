@@ -41,6 +41,7 @@ player.on('play', function() {
 
 
 
+
 // video title 효과
 const letters = document.querySelectorAll('.video .title > p > span');
 
@@ -66,3 +67,33 @@ var swiper = new Swiper(".fromJeju-swiper", {
         }
     }
 });
+
+
+
+// sec-2 이미지 텍스트
+$(document).ready(function() {
+    $('.sec-2 .field').click(function() {
+        // 클릭한 버튼의 index 구하기 (0, 1, 2)
+        const index = $(this).index();
+
+        // 모든 .left(main-1, main-2, main-3) 숨기기
+        $('.sec-2 .main .left').hide();
+
+        // 해당하는 인덱스의 .left 보여주기
+        $('.sec-2 .main .left').eq(index).show();
+
+        // 배경 이미지
+        $('.sec-2').css('background-image', 'url(/오설록images/sec-2_' + (index + 1) + '.png)');
+
+        // 클릭된 .field에 'active' 클래스를 추가하고 다른 .field에서 제거
+        $(this).siblings().removeClass('active'); 
+        $(this).addClass('active'); 
+    });
+
+    // 페이지 로딩 시 하나만 보이게 초기화
+    $('.sec-2 .main .left').hide();
+    $('.sec-2 .main .left').eq(0).show();
+    $('.sec-2').css('background-image', 'url(/오설록images/sec-2_1.png)');
+    $('.sec-2 .main .right .field').eq(0).addClass('active');
+});
+
