@@ -124,7 +124,7 @@ header .h-main {
     justify-content: space-between;
     align-items: center;
     height: 70px;
-    padding-inline: 50px;
+    padding-inline: 30px;
     position: relative;
 }
 
@@ -167,6 +167,48 @@ header .h-main .icons .menu-bar {
 header.up .h-main {
     background-image: linear-gradient(to bottom, rgba(244, 247, 239, 0.7), transparent);;
 }
+
+@media screen and (max-width: 1210px) {
+    header .h-main .gnb ul {
+        gap: 32px;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    header .h-main .logo {
+        width: 130px;
+    }
+
+    header .h-main .gnb {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    header .h-main {
+        height: 50px;
+        padding-inline: 20px;
+    }
+
+    header .h-main .logo {
+        width: 100px;
+    }
+
+    header .h-main .icons {
+        gap: 12px;
+    }
+
+    header .h-main .icons a {
+        width: 30px;
+        height: 30px;
+    }
+
+    header .h-main .icons .menu-bar {
+        width: 30px;
+        height: 30px;
+    }
+}
+
 /* h-main 끝 */
 /* header 끝 */
 
@@ -179,7 +221,8 @@ header.up .h-main {
 }
 
 /* video시작 */
-.video {    
+.video {
+    height: 100vh;    
     overflow: hidden;    
     pointer-events: none;
     display: flex;
@@ -190,7 +233,7 @@ header.up .h-main {
 .video .video-box {   
     position: relative;  
     width: 100vw;
-    aspect-ratio: 16/9;
+    padding-bottom: 77%;
     overflow: hidden;  
 }
 
@@ -229,22 +272,30 @@ header.up .h-main {
 }
 
 .video .title > span {
-    font-size: clamp(21px, 4.17vw, 80px);
-    font-weight: 400;    
+    font-size: clamp(34px, 6vw, 80px);
+    font-weight: 400; 
 }
 
 .video .title p {    
     text-align: center;
     margin-top: 42px;   
     span {
-        font-size: clamp(14px, 1.04vw, 20px);
+        font-size: clamp(14px, 1.6vw, 20px);
         font-weight: 300;
         line-height: 1.7; 
         opacity: 0;
     }
 }
 
-@media screen and (max-width: 1023px) {
+.video .title .mx-550 {
+    display: none;
+}
+
+@media screen and (max-width: 1260px) {
+    .video .video-box {   
+        padding-bottom: 177%;
+    }
+
     .video .video-box .pc {
         display: none;
     }
@@ -253,6 +304,23 @@ header.up .h-main {
         display: block;
     }
 }
+
+@media screen and (max-width: 780px) {
+    .video .title p {    
+        margin-top: 28px;  
+    }    
+}
+
+@media screen and (max-width: 550px) {
+    .video .title p {
+        letter-spacing: -1px;
+    }
+    
+    .video .title .mx-550 {
+        display: block;
+    }
+}
+
 /* video 끝 */
 
 /* section-1 시작 */
@@ -272,7 +340,7 @@ header.up .h-main {
 
 .sec-1 .swiper {
     margin: 0 auto;
-    margin-inline: 50px;
+    margin-inline: 20px;
 }
 
 .sec-1 .swiper .swiper-slide {
@@ -324,6 +392,10 @@ header.up .h-main {
     line-height: 2;
 }
 
+.sec-1 .swiper .swiper-slide .left .bottom .mx-990 {
+    display: none;
+}
+
 .sec-1 .swiper .swiper-slide .right {
     max-width: 350px;
     max-height: 350px;
@@ -365,7 +437,7 @@ header.up .h-main {
 .sec-1 .swiper .swiper-pagination img {
     width: 30px;
     height: 30px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .sec-1 .swiper .swiper-pagination .swiper-pagination-bullet {
@@ -395,6 +467,100 @@ header.up .h-main {
 .sec-1 .swiper .swiper-pagination .swiper-pagination-bullet-5 {
     background-color: #82664F;
 }
+
+@media screen and (max-width: 990px) {
+    .sec-1 {
+        padding-top: 150px;
+        padding-bottom: 150px;
+    }
+
+    .sec-1 h1 {
+        font-size: 40px;
+        margin-bottom: 100px;
+    }
+
+    .sec-1 .swiper .swiper-slide .left .top .title {
+        font-size: 28px;
+    }
+    
+    .sec-1 .swiper .swiper-slide .left .bottom {
+        margin-top: 48px;
+        font-size: 16px;        
+    }
+
+    .sec-1 .swiper .swiper-slide .left .bottom .mx-990 {
+        display: block;
+    }
+
+}
+
+
+@media screen and (max-width: 780px) {
+    .sec-1 {
+        padding-top: 120px;
+        padding-bottom: 100px;
+    }
+
+    .sec-1 h1 {
+        font-size: 32px;
+        margin-bottom: 80px;
+    }
+
+    .sec-1 .swiper .swiper-slide {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .sec-1 .swiper .swiper-slide .left .top .title {
+        font-size: 24px;
+    }
+
+    .sec-1 .swiper .swiper-slide .left .bottom {
+        margin-top: 32px;
+    }
+
+    .sec-1 .swiper .swiper-slide .right {
+        max-width: 180px;
+        max-height: 180px;
+    }   
+
+    .sec-1 .swiper .swiper-pagination {
+        gap: 50px;
+        margin-top: 60px;
+    }
+
+    .sec-1 .swiper .swiper-pagination span {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .sec-1 .swiper .swiper-pagination img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .sec-1 .swiper .swiper-slide {
+        gap: 35px;
+    }
+
+    .sec-1 .swiper .swiper-slide .left .bottom {
+        margin-top: 32px;
+        line-height: 1.7;
+    }
+
+    .sec-1 .swiper .swiper-slide .right {
+        max-width: 140px;
+        max-height: 140px;
+    }
+
+    .sec-1 .swiper .swiper-pagination {
+        gap: 24px;
+        margin-top: 40px;
+    }
+}
+
 /* section-1 끝 */
 
 
@@ -574,6 +740,117 @@ header.up .h-main {
     top: 45.5%;
     left: 63%;
 }
-
-
 /* section-2 끝 */
+
+
+
+/* section-3 시작 */
+.sec-3 {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    background-color: var(--bg);
+    position: relative;
+}
+
+.sec-3 .title {
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--txt);
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.sec-3 .sub {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--txt);
+    text-align: center;
+}
+
+.sec-3 .main {    
+    width: 100%;  
+    position: relative;
+    margin-top: 100px;
+}
+
+
+.sec-3 .main .item {    
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 722px;
+    margin: 0 auto;
+}
+
+
+.sec-3 .main .item .top > span {
+    color: var(--txt);
+}
+
+.sec-3 .main .item .top > .sura {
+    font-family: "Sura", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 80px;
+}
+
+.sec-3 .main .item .top > span:last-child {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 24px;
+    margin-left: 13px ;
+}
+
+.sec-3 .main .item .bottom {
+    display: flex;
+    gap: 20px;
+    max-width: 722px;
+    max-height: 455px;
+}
+
+.sec-3 .main .item .bottom .left,
+.sec-3 .main .item .bottom .right {
+    width: 50%;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.2);;
+}
+
+.sec-3 .main .item .bottom .left > img,
+.sec-3 .main .item .bottom .right > img {
+    position: relative;
+    z-index: -1;
+}
+
+
+.sec-3 .main .item .bottom .txt {
+    width: 245px;
+    position: absolute;
+    bottom: 5.2%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;    
+}
+
+.sec-3 .main .item .bottom .txt .info {
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 300;
+    small {
+        display: inline-block;
+        font-size: 12px;
+        margin-top: 20px;
+    }
+}
+
+.sec-3 .main .item .bottom .txt .txt-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    display: block;
+    text-align: center;
+    margin-top: 35px;
+}
+/* section-3 끝 */

@@ -97,3 +97,40 @@ $(document).ready(function() {
     $('.sec-2 .main .right .field').eq(0).addClass('active');
 });
 
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+//pin
+ScrollTrigger.create({    
+        trigger: ".sec-3 .main",
+        start: "top 10%",
+        end: "bottom bottom",
+        pin: true, 
+        markers: true,
+        scroller: ".scroller",
+});
+
+
+
+ScrollTrigger.scrollerProxy(".scroller", {
+    scrollTop(value) {
+      if (arguments.length) {
+        bodyScrollBar.scrollTop = value;
+      }
+      return bodyScrollBar.scrollTop;
+    },
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight
+      };
+    },
+    pinType: document.querySelector(".scroller").style.transform ? "transform" : "fixed"
+  });
+  
+  // ScrollTrigger와 Smooth Scrollbar 동기화
+  bodyScrollBar.addListener(ScrollTrigger.update);
+  ScrollTrigger.defaults({ scroller: ".scroller" });
