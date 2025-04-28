@@ -103,11 +103,32 @@ $(document).ready(function() {
 gsap.registerPlugin(ScrollTrigger);
 
 
-//pin
+// sec-3 main pin효과
 ScrollTrigger.create({    
         trigger: ".sec-3",
         start: "top 10%",
         end: "bottom bottom",
         pin: ".sec-3 .main", 
         markers: true,        
+});
+
+
+
+//sec-4 스와이퍼
+var swiper = new Swiper(".timeline-swiper", {
+    slidesPerView: 'auto',
+    spaceBetween: -100,
+});
+
+
+
+//sec-5 스와이퍼
+var swiper = new Swiper(".meet-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 100,
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+    loop: true,
 });

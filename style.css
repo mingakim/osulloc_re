@@ -66,6 +66,11 @@ img {
     object-fit: cover;
 }
 
+.sub {
+    line-height: 1.4;
+    margin-top: 32px;
+}
+
 
 
 /* 변수 */
@@ -586,7 +591,6 @@ header.up .h-main {
     color: var(--txt);
     font-size: 16px;
     font-weight: 300;
-    margin-top: 32px;
     text-align: center;
     strong {
         font-weight: 400
@@ -756,7 +760,6 @@ header.up .h-main {
     font-size: 36px;
     font-weight: 400;
     color: var(--txt);
-    margin-bottom: 28px;
     text-align: center;
 }
 
@@ -877,4 +880,203 @@ header.up .h-main {
     font-size: 16px;
     font-weight: 300;
 }
+
+.sec-4 .timeline-swiper {
+    margin-top: 150px;
+    position: relative;
+    left: 15%;
+    height: 686px;    
+}
+
+.sec-4 .timeline-swiper .line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+    background-color: var(--txt);
+    z-index: 10;
+}
+
+.sec-4 .timeline-swiper .line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--txt);
+    overflow: hidden;
+}
+
+.sec-4 .timeline-swiper .line::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--txt);
+    overflow: hidden;
+}
+
+
+.sec-4 .timeline-swiper .swiper-slide {
+    width: 300PX;
+    height: 293px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+}
+
+
+.sec-4 .swiper-wrapper .margin-left-60 {
+    margin-left: 60px !important;
+}
+
+.sec-4 .swiper-wrapper .margin-left-200 {
+    margin-left: 200px !important;
+}
+
+.sec-4 .timeline-swiper .top::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    transform: translateY(25px);
+    height: 20px;
+    border: 1px dashed var(--txt);
+}
+
+.sec-4 .timeline-swiper .top::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50% , 47px);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--txt);
+    overflow: hidden;
+}
+
+.sec-4 .timeline-swiper .bottom {
+    transform: translateY(376px);
+}
+
+.sec-4 .timeline-swiper .bottom::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    transform: translateY(-25px);
+    height: 20px;
+    border: 1px dashed var(--txt);
+}
+
+.sec-4 .timeline-swiper .bottom::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50% , -47px);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--txt);
+    overflow: hidden;
+}
+
+
+.sec-4 .swiper-slide ul {
+    display: flex;
+    gap: 30px;
+}
+
+.sec-4 .swiper-slide ul > li {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 14px;
+}
+
+.sec-4 .swiper-slide .img-box {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.sec-4 .swiper-slide .txt {
+    width: 100%;
+    text-align: center;
+}
+
+.sec-4 .swiper-slide .txt > span {
+    font-size: 20px; 
+    font-weight: 500;
+    color: var(--txt);
+}
+
+.sec-4 .swiper-slide .txt > p {
+    font-size: 14px; 
+    font-weight: 300;
+    color: var(--txt);
+    text-align: center;
+    margin-top: 6px;
+}
 /* section-4 끝 */
+
+
+
+/* section-5 시작 */
+.sec-5 {
+    padding-top: 200px;
+    padding-bottom: 130px;
+    background-image: linear-gradient(to bottom, #C3CEB7 0%, #F7F4EF 45%, #F7F4EF 100%);
+    color: var(--txt)
+}
+
+.sec-5 .wrap {
+    display: flex;
+    gap: 110px;
+    justify-content: center;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.sec-5 .left {
+    max-width: 530px;
+}
+
+.sec-5 .left .title {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.sec-5 .left .sub {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.sec-5 .right {
+    max-width: 595px;
+}
+
+.sec-5 .meet-swiper .slide > p {
+    text-align: center;
+    margin-top: 26px;
+    font-size: 14px;
+    font-weight: 300;
+}
+/* section-5 끝 */
