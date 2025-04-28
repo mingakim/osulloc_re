@@ -10,6 +10,7 @@ bodyScrollBar = Scrollbar.init(bodyScroller, {
 
 
 
+
 // h-top사라짐
 let lastScrollTop = 0;
 
@@ -48,7 +49,7 @@ const letters = document.querySelectorAll('.video .title > p > span');
 gsap.to(letters, {
     duration: 2,
     opacity: 1,
-    stagger: 0.06, // 한 글자씩 0.1초 간격으로
+    stagger: 0.06, 
     ease: "power1.inOut"
 });
 
@@ -98,39 +99,15 @@ $(document).ready(function() {
 });
 
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 
 //pin
 ScrollTrigger.create({    
-        trigger: ".sec-3 .main",
+        trigger: ".sec-3",
         start: "top 10%",
         end: "bottom bottom",
-        pin: true, 
-        markers: true,
-        scroller: ".scroller",
+        pin: ".sec-3 .main", 
+        markers: true,        
 });
-
-
-
-ScrollTrigger.scrollerProxy(".scroller", {
-    scrollTop(value) {
-      if (arguments.length) {
-        bodyScrollBar.scrollTop = value;
-      }
-      return bodyScrollBar.scrollTop;
-    },
-    getBoundingClientRect() {
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight
-      };
-    },
-    pinType: document.querySelector(".scroller").style.transform ? "transform" : "fixed"
-  });
-  
-  // ScrollTrigger와 Smooth Scrollbar 동기화
-  bodyScrollBar.addListener(ScrollTrigger.update);
-  ScrollTrigger.defaults({ scroller: ".scroller" });
