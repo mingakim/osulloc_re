@@ -105,30 +105,50 @@ gsap.registerPlugin(ScrollTrigger);
 
 // sec-3 main pin효과
 ScrollTrigger.create({    
-        trigger: ".sec-3",
-        start: "top 10%",
-        end: "bottom bottom",
-        pin: ".sec-3 .main", 
+        trigger: '.sec-3',
+        start: 'top 10%',
+        end: 'bottom bottom',
+        pin: '.sec-3 .main', 
         markers: true,        
 });
 
 
 
+
+//sec-4 line
+const line = document.querySelectorAll('.sec-4 .line');
+gsap.to(line, {
+    scrollTrigger: {
+      trigger: '.sec-4',
+      start: 'top top', 
+      toggleActions: 'play none none none' // 한 번만 실행
+    },
+    width: '100%',
+    opacity: 1,
+    duration: 1,
+    ease: 'power2.out',
+});
+
+
 //sec-4 스와이퍼
-var swiper = new Swiper(".timeline-swiper", {
+var swiper = new Swiper('.timeline-swiper', {
     slidesPerView: 'auto',
     spaceBetween: -100,
+    slidesOffsetAfter: 300, //margin-left값, 음수값값 때문에 잘려서 마지막 슬라이드에 공간주기
 });
+
+
 
 
 
 //sec-5 스와이퍼
-var swiper = new Swiper(".meet-swiper", {
+var swiper = new Swiper('.meet-swiper', {
     slidesPerView: 1,
     spaceBetween: 100,
     autoplay: {
-        delay: 3500,
+        delay: 4500,
         disableOnInteraction: false,
     },
     loop: true,
 });
+
