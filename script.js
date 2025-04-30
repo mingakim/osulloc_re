@@ -133,90 +133,66 @@ $(document).ready(function () {
 
 
 
-    // sec-3 main pin효과
-    // 타임라인 생성
-    // var items = gsap.utils.toArray('.sec-3 .main > .item');
-    // var txt = gsap.utils.toArray('.sec-3 .main .bottom .txt');
-
-    // var easAction = gsap.timeline({
-    //     defaults: {
-    //     ease: 'none',        // 기본 easing 없이 순차적으로 진행
-    //     stagger: 1.5         // 각 item들에 대한 stagger (0.2초 간격)
-    //     },
-    //     paused: true           // 애니메이션을 처음에 멈춰두기
-    // });
-
-
-    // // 각 item에 대해 애니메이션을 순차적으로 추가
-    // easAction
-    //     .to(items, {
-    //     yPercent: 0,         // item들이 위로 올라옴
-    //     duration: 1          // 각 item마다 1초의 애니메이션
-    //     })
-    //     .to(txt, {
-    //     opacity: 1,          // .txt 요소의 opacity를 1로 설정 (보이도록)
-    //     duration: 1          // 1초 동안 opacity가 1로 변함
-    //     }, '+=0.5')            // 아이템들이 올라오는 애니메이션 뒤에 .txt가 등장하도록 0.5초 딜레이
-    //     .to(txt, {
-    //     opacity: 0,          // .txt 요소의 opacity를 0으로 설정 (사라지도록)
-    //     duration: 1          // 1초 동안 opacity가 0으로 변함
-    //     }, '+=1');             // 1초 후에 텍스트가 사라지도록 설정
-
-
-
-    // // ScrollTrigger로 애니메이션을 스크롤에 맞춰 트리거
-    // ScrollTrigger.create({
-    //     trigger: '.sec-3',              // .sec-3 요소가 트리거가 됨
-    //     start: 'top -10%',               // 스크롤이 10% 위치에 도달하면 애니메이션 시작
-    //     end: 'bottom bottom',           // .sec-3가 화면 하단에 도달하면 애니메이션 종료
-    //     animation: easAction,           // 스크롤에 맞춰 실행될 애니메이션
-    //     scrub: 0.5,                     // 스크롤에 맞춰 애니메이션이 부드럽게 진행됨
-    //     pin: '.sec-3 .main',                      // .sec-3을 고정시켜 스크롤 중에도 유지
-    //     markers: true                   // 디버깅용 마커 표시
-    // });
-
-
-    // .sec-3 섹션의 .item 요소들을 배열로 가져오기
-    const items = gsap.utils.toArray('.sec-3 .main > .item');
-    const txts = gsap.utils.toArray('.sec-3 .main .txt');
-
-    // 초기 상태 설정
-    gsap.set(items, { yPercent: 110 });
+    const items = gsap.utils.toArray(".sec-3 .main .item");
+    const txts = gsap.utils.toArray(".sec-3 .main .item .txt");
+    
+    // 초기 설정
+    gsap.set(items, { yPercent: 120 });
+    gsap.set(items[0], { yPercent: 0 });
     gsap.set(txts, { opacity: 0 });
-
-    // 타임라인 생성
-    const easAction = gsap.timeline({
-        defaults: { ease: 'none' },
-        paused: true
+    gsap.set(items[0].querySelectorAll(".txt"), { opacity: 1 });
+    
+    // 메인 타임라인 생성
+    const sec3Timeline = gsap.timeline({
+        paused: true,
     });
-
-    // 각 item과 txt를 순서대로 애니메이션에 추가
+    
+    // 각 item 순차 애니메이션 설정
     items.forEach((item, index) => {
-        easAction
-            .to(item, {
+        const prevItem = items[index - 1];
+        const currentTxts = item.querySelectorAll(".txt");
+
+
+        // 현재 item 나타나기
+        sec3Timeline.to(item, {            
             yPercent: 0,
             duration: 1,
-            })
-            .to(txts, {
+            ease: "power2.out",
+        });
+        
+        // 현재 txt들 보이기
+        sec3Timeline.to(
+            currentTxts,
+            {
             opacity: 1,
             duration: 0.5,
-            }, "-=0.5") // item 올라오면서 txt도 동시에 거의 같이
-            .to(txts, {
-            opacity: 0,
-            duration: 0.5,
-            }, "+=0.8"); // 잠깐 보여지고 사라지도록
+            ease: "power1.out",
+            },
+            "-=0.6"  
+        );
+
+        // 이전 item 사라지기
+        if (prevItem) {
+                sec3Timeline.to(prevItem, {
+                opacity: 0,
+                duration: 0.5,
+                ease: "power1.out",
+                }, "-=0.8"); // 약간 겹쳐서 진행
+        }
+    });
+        
+    // ScrollTrigger 연결
+    ScrollTrigger.create({
+    animation: sec3Timeline,
+    trigger: ".sec-3 .main",
+    start: "top 22%",
+    end:  `+=${items.length * 1000}`, // 아이템 수에 비례한 스크롤 거리
+    scrub: 1,
+    pin: true,
+    // markers: true,
     });
 
-    // ScrollTrigger 설정
-    ScrollTrigger.create({
-        trigger: '.sec-3 .main',
-        start: 'top top',
-        end: `+=${items.length * 500}`, // 아이템 수에 비례한 scroll 길이
-        animation: easAction,
-        scrub: 0.5,
-        pin: true,
-        markers: true
-    });  
+
 
 
 
@@ -225,24 +201,39 @@ $(document).ready(function () {
     gsap.to(line, {
         scrollTrigger: {
             trigger: '.sec-4',
-            start: 'top top', 
+            start: 'top 10%', 
             toggleActions: 'play none none none' // 한 번만 실행
         },
         width: '100%',
         opacity: 1,
-        duration: 1,
+        duration: 2,
         ease: 'power2.out',
     });
 
 
+    
     //sec-4 스와이퍼
     var swiper2 = new Swiper('.timeline-swiper', {
         slidesPerView: 'auto',
         spaceBetween: -100,
-        slidesOffsetAfter: 300, //margin-left값, 음수값값 때문에 잘려서 마지막 슬라이드에 공간주기
+        slidesOffsetAfter: 300, //margin-left값, 음수값 때문에 잘려서 마지막 슬라이드에 공간주기
     });
 
+    gsap.set('.timeline-swiper .swiper-slide', { opacity: 0 });
 
+    // 각 슬라이드가 하나씩 보이도록 애니메이션 추가
+    gsap.to('.timeline-swiper .swiper-slide', {
+        opacity: 1,
+        duration: 1,
+        stagger: 0.5, // 슬라이드들이 0.5초 간격으로 나타나도록 설정
+        toggleActions: 'play none none none',
+        scrollTrigger: {
+            trigger: '.timeline-swiper',
+            start: 'top 60%', // 화면에 슬라이드가 들어오면 애니메이션 시작
+            end: 'bottom 10%', // 화면을 벗어나기 직전에 애니메이션 종료
+            scrub: 1, // 스크롤에 따라 애니메이션 진행            
+        }
+    });
 
 
 
