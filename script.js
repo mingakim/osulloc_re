@@ -132,86 +132,72 @@ $(document).ready(function () {
 
 
 
-
+    // sec-3 pin 설정
     const items = gsap.utils.toArray(".sec-3 .main .item");
     const txts = gsap.utils.toArray(".sec-3 .main .item .txt");
     
-    // 초기 설정
-    gsap.set(items, { yPercent: 120 });
-    gsap.set(items[0], { yPercent: 0 });
-    gsap.set(txts, { opacity: 0 });
-    gsap.set(items[0].querySelectorAll(".txt"), { opacity: 1 });
-    
-    // 메인 타임라인 생성
-    const sec3Timeline = gsap.timeline({
-        paused: true,
-    });
-    
-    // 각 item 순차 애니메이션 설정
-    items.forEach((item, index) => {
-        const prevItem = items[index - 1];
-        const currentTxts = item.querySelectorAll(".txt");
-
-
-        // 현재 item 나타나기
-        sec3Timeline.to(item, {            
-            yPercent: 0,
-            duration: 1,
-            ease: "power2.out",
-        });
+    ScrollTrigger.matchMedia({
+        // 561px 이상일 때만 실행
+        "(min-width: 561px)": function () {
+            // 초기 상태 세팅
+            gsap.set(items, { yPercent: 120 });
+            gsap.set(items[0], { yPercent: 0 });
+            gsap.set(txts, { opacity: 0 });
+            gsap.set(items[0].querySelectorAll(".txt"), { opacity: 1 });
         
-        // 현재 txt들 보이기
-        sec3Timeline.to(
-            currentTxts,
-            {
-            opacity: 1,
-            duration: 0.5,
-            ease: "power1.out",
-            },
-            "-=0.6"  
-        );
-
-        // 이전 item 사라지기
-        if (prevItem) {
-                sec3Timeline.to(prevItem, {
-                opacity: 0,
+            // 타임라인 생성
+            const sec3Timeline = gsap.timeline({ paused: true });
+        
+            items.forEach((item, index) => {
+            const prevItem = items[index - 1];
+            const currentTxts = item.querySelectorAll(".txt");
+        
+            sec3Timeline.to(item, {
+                yPercent: 0,
+                duration: 1,
+                ease: "power2.out",
+            });
+        
+            sec3Timeline.to(
+                currentTxts,
+                {
+                opacity: 1,
                 duration: 0.5,
                 ease: "power1.out",
-                }, "-=0.8"); // 약간 겹쳐서 진행
+                },
+                "-=0.6"
+            );
+        
+            if (prevItem) {
+                sec3Timeline.to(
+                prevItem,
+                {
+                    opacity: 0,
+                    duration: 0.5,
+                    ease: "power1.out",
+                },
+                "-=0.8"
+                );
+            }
+            });
+        
+            // ScrollTrigger 연결
+            ScrollTrigger.create({
+            animation: sec3Timeline,
+            trigger: ".sec-3 .main",
+            start: "top 22%",
+            end: `+=${items.length * 1000}`,
+            scrub: 1,
+            pin: true,
+            // markers: true,
+            });
         }
     });
-        
-    // ScrollTrigger 연결
-    ScrollTrigger.create({
-    animation: sec3Timeline,
-    trigger: ".sec-3 .main",
-    start: "top 22%",
-    end:  `+=${items.length * 1000}`, // 아이템 수에 비례한 스크롤 거리
-    scrub: 1,
-    pin: true,
-    // markers: true,
-    });
 
 
 
 
 
-    //sec-4 line
-    const line = document.querySelectorAll('.sec-4 .line');
-    gsap.to(line, {
-        scrollTrigger: {
-            trigger: '.sec-4',
-            start: 'top 10%', 
-            toggleActions: 'play none none none' // 한 번만 실행
-        },
-        width: '100%',
-        opacity: 1,
-        duration: 2,
-        ease: 'power2.out',
-    });
-
-
-    
     //sec-4 스와이퍼
     var swiper2 = new Swiper('.timeline-swiper', {
         slidesPerView: 'auto',
@@ -219,21 +205,34 @@ $(document).ready(function () {
         slidesOffsetAfter: 300, //margin-left값, 음수값 때문에 잘려서 마지막 슬라이드에 공간주기
     });
 
-    gsap.set('.timeline-swiper .swiper-slide', { opacity: 0 });
+    // sec-4 line
+    const line = document.querySelectorAll('.sec-4 .line');
 
-    // 각 슬라이드가 하나씩 보이도록 애니메이션 추가
-    gsap.to('.timeline-swiper .swiper-slide', {
-        opacity: 1,
-        duration: 1,
-        stagger: 0.5, // 슬라이드들이 0.5초 간격으로 나타나도록 설정
-        toggleActions: 'play none none none',
+
+    // GSAP 타임라인 생성
+    const tl = gsap.timeline({
         scrollTrigger: {
-            trigger: '.timeline-swiper',
-            start: 'top 60%', // 화면에 슬라이드가 들어오면 애니메이션 시작
-            end: 'bottom 10%', // 화면을 벗어나기 직전에 애니메이션 종료
-            scrub: 1, // 스크롤에 따라 애니메이션 진행            
+            trigger: '.sec-4',
+            start: 'top 5%',
+            end: 'center 50%',            
         }
     });
+
+    // line 애니메이션 추가
+    tl.to(line, {
+        width: '100%',
+        opacity: 1,
+        duration: 1.5,
+        ease: 'power2.out',
+        toggleActions: 'play none none none',
+    })
+    // swiper-slide 애니메이션이 line 애니메이션이 끝난 후에 실행되도록 추가
+    .to('.timeline-swiper .swiper-slide', {
+        opacity: 1,
+        duration: 1,
+        stagger: 0.2,
+        toggleActions: 'play none none none',
+    }, "-=0.8");
 
 
 
