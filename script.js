@@ -185,7 +185,7 @@ $(document).ready(function () {
             ScrollTrigger.create({
             animation: sec3Timeline,
             trigger: ".sec-3 .main",
-            start: "top 22%",
+            start: "top 12%",
             end: `+=${items.length * 1000}`,
             scrub: 1,
             pin: true,

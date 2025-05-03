@@ -934,6 +934,8 @@ header.up .h-main {
     display: flex;
     gap: 20px;
     width: 100%;
+    min-height: 0;
+    /* 넘침방지해주기! min-height: 0 */
 }
 
 .sec-3 .main .item .bottom .left,
@@ -941,8 +943,14 @@ header.up .h-main {
     width: 50%;
     position: relative;
     background-color: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
+.sec-3 .main .item .bottom .left > img,
+.sec-3 .main .item .bottom .right > img {
+    width: 100%;
+    height: 100%;
+}
 
 .sec-3 .main .item .bottom .txt {
     width: 90%;
@@ -976,26 +984,26 @@ header.up .h-main {
 
 @media screen and (min-width: 561px) {
     .sec-3 .main {    
-        width: 100%; 
-        height: calc(100vh - 200px);
-        margin-top: 100px;
-        position: relative;
-        align-items: center; 
+        width: 90%; 
+        aspect-ratio: 3 / 4;
+        margin-inline: auto;
     }
 
     .sec-3 .main .item { 
-        max-width: 722px;  
+        width: 100%;
+        height: 100%;  
         position: absolute;
         top: 0;
     }
 
     .sec-3 .main .item .bottom {
-        max-height: 455px;
+        max-height: calc(100vh - 240px);        
     }
 
     .sec-3 .main .item .bottom .left > img,
     .sec-3 .main .item .bottom .right > img {
         width: 100%;
+        height: 100%;
         position: relative;
         z-index: -1;
     }
@@ -1077,6 +1085,7 @@ header.up .h-main {
     padding-top: 130px;
     padding-bottom: 130px;
     background-image: linear-gradient(to bottom, #F7F4EF 0%, #C3CEB7 52%, #C3CEB7 100%);
+    overflow: hidden;
 }
 
 .sec-4 .title {
