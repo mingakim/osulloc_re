@@ -932,7 +932,7 @@ header.up .h-main {
 
 .sec-3 .main .item .bottom {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     width: 100%;
     min-height: 0;
     /* 넘침방지해주기! min-height: 0 */
@@ -982,10 +982,12 @@ header.up .h-main {
     margin-top: 35px;
 }
 
-@media screen and (min-width: 561px) {
+@media screen and (min-width: 780px) {
     .sec-3 .main {    
         width: 90%; 
-        aspect-ratio: 3 / 4;
+        aspect-ratio: 3 / 2;  
+        min-height: 530px;    
+        max-height: 610px;  
         margin-inline: auto;
     }
 
@@ -994,10 +996,6 @@ header.up .h-main {
         height: 100%;  
         position: absolute;
         top: 0;
-    }
-
-    .sec-3 .main .item .bottom {
-        max-height: calc(100vh - 240px);        
     }
 
     .sec-3 .main .item .bottom .left > img,
@@ -1019,6 +1017,15 @@ header.up .h-main {
         font-size: 14px;
     }
 
+    .sec-3 .main {
+        gap: 50px; 
+    }
+
+    .sec-3 .main .item {   
+        gap: 20px;
+        max-height: 600px;
+    }
+
     .sec-3 .main .item .top > .sura {
         font-size: 55px;
     }
@@ -1032,13 +1039,14 @@ header.up .h-main {
 @media screen and (max-width: 560px) {
 
     .sec-3 .main {
-        gap: 30px;        
+        gap: 40px;        
         margin-top: 65px;
     }
 
     .sec-3 .main .item {   
         max-width: 100%; 
         gap: 10px;
+        max-height: 800px;
     }
 
     .sec-3 .main .item .top {

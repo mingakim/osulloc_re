@@ -138,9 +138,9 @@ $(document).ready(function () {
     
     ScrollTrigger.matchMedia({
         // 561px 이상일 때만 실행
-        "(min-width: 561px)": function () {
+        "(min-width: 780px)": function () {
             // 초기 상태 세팅
-            gsap.set(items, { yPercent: 120 });
+            gsap.set(items, { yPercent: 140 });
             gsap.set(items[0], { yPercent: 0 });
             gsap.set(txts, { opacity: 0 });
             gsap.set(items[0].querySelectorAll(".txt"), { opacity: 1 });
@@ -232,7 +232,7 @@ $(document).ready(function () {
         duration: 1,
         stagger: 0.2,
         toggleActions: 'play none none none',
-    }, "-=0.8");
+    }, "-=0.6");
 
 
 
