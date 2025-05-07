@@ -1,4 +1,6 @@
 // scroller 설정
+
+
 $(document).ready(function () {
     // 1. ScrollTrigger 등록
     gsap.registerPlugin(ScrollTrigger);
@@ -14,7 +16,7 @@ $(document).ready(function () {
     });
 
     // 3. ScrollTrigger에 스크롤 동기화
-    ScrollTrigger.scrollerProxy(".scroller", {
+    ScrollTrigger.scrollerProxy('.scroller', {
         scrollTop(value) {
         if (arguments.length) {
             bodyScrollBar.scrollTop = value;
@@ -35,9 +37,10 @@ $(document).ready(function () {
     bodyScrollBar.addListener(ScrollTrigger.update);
 
     // 5. 필요 시 리프레시
-    ScrollTrigger.defaults({ scroller: ".scroller" });
+    ScrollTrigger.defaults({ scroller: '.scroller' });
+    AOS.init();
+    ScrollTrigger.addEventListener('refresh', AOS.refresh);
     ScrollTrigger.refresh();
-
 
 
 
@@ -79,13 +82,33 @@ $(document).ready(function () {
     gsap.to(letters, {
         duration: 2,
         opacity: 1,
-        stagger: 0.06, 
+        stagger: 0.05, 
         ease: "power1.inOut"
     });
 
+    let getAllAos = Array.prototype.slice.call(document.querySelectorAll('[data-aos]'));
+
+    AOS.init({
+		easing: 'ease-out-quart',
+		duration: 1000,
+		once: true,
+	});
+
+    getAllAos.length > 0 && getAllAos.forEach((item) => {
+		gsap.to(item, {
+			scrollTrigger: {
+				trigger: item,
+				start: 'top bottom',
+				end: 'bottom center',
+				onEnter: (scroll) => {
+					item.classList.add('aos-animate');
+				}
+			}
+		})
+	});
 
     // sec-1스와이퍼
-    var swiper1 = new Swiper(".fromJeju-swiper", {
+    var swiper1 = new Swiper('.fromJeju-swiper', {
         slidesPerView: 1,
         loop: true,
         pagination: {
@@ -100,6 +123,7 @@ $(document).ready(function () {
     });
 
 
+    
 
     // sec-2 이미지 텍스트
     $(document).ready(function() {
@@ -133,12 +157,12 @@ $(document).ready(function () {
 
 
     // sec-3 pin 설정
-    const items = gsap.utils.toArray(".sec-3 .main .item");
-    const txts = gsap.utils.toArray(".sec-3 .main .item .txt");
+    const items = gsap.utils.toArray('.sec-3 .main .item');
+    const txts = gsap.utils.toArray('.sec-3 .main .item .txt');
     
     ScrollTrigger.matchMedia({
         // 561px 이상일 때만 실행
-        "(min-width: 780px)": function () {
+        '(min-width: 780px)': function () {
             // 초기 상태 세팅
             gsap.set(items, { yPercent: 140 });
             gsap.set(items[0], { yPercent: 0 });
@@ -185,7 +209,7 @@ $(document).ready(function () {
             ScrollTrigger.create({
             animation: sec3Timeline,
             trigger: ".sec-3 .main",
-            start: "top 12%",
+            start: "top 15%",
             end: `+=${items.length * 1000}`,
             scrub: 1,
             pin: true,
@@ -201,8 +225,23 @@ $(document).ready(function () {
     //sec-4 스와이퍼
     var swiper2 = new Swiper('.timeline-swiper', {
         slidesPerView: 'auto',
-        spaceBetween: -100,
-        slidesOffsetAfter: 300, //margin-left값, 음수값 때문에 잘려서 마지막 슬라이드에 공간주기
+        spaceBetween: -60,
+        slidesOffsetAfter: 150, //margin-left값, 음수값 때문에 잘려서 마지막 슬라이드에 공간주기
+        breakpoints: {
+            440: {
+                spaceBetween: -100,
+            },
+
+            780: {
+                spaceBetween: -80,
+                slidesOffsetAfter: 300, 
+            },
+
+            990: {
+                spaceBetween: -100,
+                slidesOffsetAfter: 350,
+            }
+        }
     });
 
     // sec-4 line
@@ -213,8 +252,8 @@ $(document).ready(function () {
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: '.sec-4',
-            start: 'top 5%',
-            end: 'center 50%',            
+            start: 'top top',
+            end: 'bottom center',            
         }
     });
 
@@ -222,7 +261,7 @@ $(document).ready(function () {
     tl.to(line, {
         width: '100%',
         opacity: 1,
-        duration: 1.5,
+        duration: 1,
         ease: 'power2.out',
         toggleActions: 'play none none none',
     })
@@ -232,7 +271,7 @@ $(document).ready(function () {
         duration: 1,
         stagger: 0.2,
         toggleActions: 'play none none none',
-    }, "-=0.6");
+    }, "-=0.5");
 
 
 
