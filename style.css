@@ -684,8 +684,8 @@ header.up .h-main {
 }
 
 .sec-2 .main .left .product img {
-    width: 154px;
-    height: 130px;
+    max-width: 154px;
+    max-height: 130px;
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -700,7 +700,7 @@ header.up .h-main {
 }
 
 .sec-2 .main .right {
-    width: 100%;
+    width: 50%;
     max-width: 595px;
     aspect-ratio: 595 / 357;
     background-image: url(/오설록images/차밭.png);
@@ -730,14 +730,6 @@ header.up .h-main {
     width: 32px;
     height: 36px;
     animation: ani 1.6s ease-in-out infinite;
-}
-
-.sec-2 .main .right .field > .click {
-    font-weight: 300;
-}
-
-.sec-2 .main .right .field.active > .click {
-    opacity: 0;
 }
 
 .sec-2 .main .right .field.active > img {
@@ -801,8 +793,11 @@ header.up .h-main {
     }
 
     .sec-2 .main .left .product img {
-        width: 124px;
-        height: 110px;
+        max-width: 124px;
+        max-height: 110px;
+    }
+    .sec-2 .main .right {
+        width: 100%;
     }
 }
 

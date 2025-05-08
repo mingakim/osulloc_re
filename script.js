@@ -86,12 +86,16 @@ $(document).ready(function () {
         ease: "power1.inOut"
     });
 
+
+
+
+    // aos효과
     let getAllAos = Array.prototype.slice.call(document.querySelectorAll('[data-aos]'));
 
     AOS.init({
 		easing: 'ease-out-quart',
 		duration: 1000,
-		once: true,
+        once: false,
 	});
 
     getAllAos.length > 0 && getAllAos.forEach((item) => {
@@ -100,12 +104,20 @@ $(document).ready(function () {
 				trigger: item,
 				start: 'top bottom',
 				end: 'bottom center',
+                scroller: '.scroller',
 				onEnter: (scroll) => {
 					item.classList.add('aos-animate');
-				}
+				},
+                onLeaveBack: () => {
+                    // 페이지 스크롤을 위로 되돌리면 클래스를 제거
+                    item.classList.remove('aos-animate');
+                }
 			}
 		})
 	});
+
+
+
 
     // sec-1스와이퍼
     var swiper1 = new Swiper('.fromJeju-swiper', {
@@ -173,36 +185,30 @@ $(document).ready(function () {
             const sec3Timeline = gsap.timeline({ paused: true });
         
             items.forEach((item, index) => {
-            const prevItem = items[index - 1];
-            const currentTxts = item.querySelectorAll(".txt");
+                const prevItem = items[index - 1];
+                const currentTxts = item.querySelectorAll(".txt");
         
-            sec3Timeline.to(item, {
-                yPercent: 0,
-                duration: 1,
-                ease: "power2.out",
-            });
-        
-            sec3Timeline.to(
-                currentTxts,
-                {
-                opacity: 1,
-                duration: 0.5,
-                ease: "power1.out",
-                },
-                "-=0.6"
-            );
-        
-            if (prevItem) {
-                sec3Timeline.to(
-                prevItem,
-                {
-                    opacity: 0,
+                sec3Timeline.to(item, {
+                    yPercent: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                });
+            
+                sec3Timeline.to(currentTxts, {
+                    opacity: 1,
                     duration: 0.5,
                     ease: "power1.out",
-                },
-                "-=0.8"
+                    },"-=0.6"
                 );
-            }
+            
+                if (prevItem) {
+                    sec3Timeline.to(prevItem, {
+                        opacity: 0,
+                        duration: 0.5,
+                        ease: "power1.out",
+                        },"-=0.8"
+                    );
+                }
             });
         
             // ScrollTrigger 연결
@@ -213,6 +219,7 @@ $(document).ready(function () {
             end: `+=${items.length * 1000}`,
             scrub: 1,
             pin: true,
+            scroller: '.scroller',
             // markers: true,
             });
         }
@@ -252,8 +259,9 @@ $(document).ready(function () {
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: '.sec-4',
-            start: 'top top',
-            end: 'bottom center',            
+            start: 'top 25%',
+            end: 'bottom 90%',   
+            scroller: '.scroller',         
         }
     });
 
