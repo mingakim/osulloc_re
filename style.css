@@ -89,6 +89,7 @@ img {
     }
 }
 
+
 /* 변수 */
 :root {
     --black-bg: #222;
@@ -389,7 +390,7 @@ header.up .h-main {
 }
 
 .sec-1 .swiper .slide-1 {
-    color: #717E8F;
+    color: #717E8F;    
 }
 
 .sec-1 .swiper .slide-2 {
@@ -1496,6 +1497,7 @@ header.up .h-main {
     font-weight: 400;
     line-height: 1.2;
     color: var(--txt);
+    padding-right: 5px;
 }
 
 .sec-6 .inner ul > li .sub {
@@ -1505,6 +1507,7 @@ header.up .h-main {
     color: var(--txt);
     margin-bottom: 20px;
     padding-inline: 0;
+    padding-right: 5px;
 }
 
 .sec-6 .inner ul > li .has-txt {
@@ -1667,6 +1670,201 @@ header.up .h-main {
         margin-left: 16px;
     }
 }
-
-
 /* section-7 끝 */
+
+
+
+
+/* footer시작 */
+footer {
+    color: #2c2c2c;
+}
+
+footer .f-top-wrap {
+    background-color: #F5F5F5;
+    padding-inline: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+footer .f-top {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;    
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+footer .f-top span {
+    font-size: 16px;
+    font-weight: 400;
+    display: inline-block;
+    margin-right: 40px;
+}
+
+footer .f-top ul {
+    flex-grow: 1;
+    max-width: 70%; 
+    height: 24px; 
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+
+footer .f-top ul > li {
+    flex-shrink: 0;
+    height: 24px;
+}
+
+footer .f-top ul > li > a {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 300;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+footer .f-top > a {
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 10px;
+}
+
+footer .f-bottom-wrap {
+    padding-inline: 20px;
+}
+
+footer .f-bottom {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+footer .f-bottom .f-b-item-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+footer .f-bottom .f-b-item-1 .img-box {
+    width: 174px;
+    height: 205px;
+    margin-right: 20px;
+}
+
+footer .f-bottom .f-b-item-1 > ul {
+    display: grid;
+    width: 80%;
+    max-width: 890px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 40px 0;
+}
+
+footer .f-bottom .f-b-item-1 > ul p {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+footer .f-bottom .f-b-item-1 > ul ul {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+footer .f-bottom .f-b-item-2 > ul {
+    display: flex;
+    justify-content: space-between;
+    max-width: 840px;
+}
+
+footer .f-bottom .f-b-item-2 > ul > li > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+footer .f-bottom .f-b-item-2 > ul > li > a > img {    
+    width: 40px;
+    height: 30px;
+    object-fit: contain;
+}
+
+footer .f-bottom .f-b-item-2 > ul > li > a > span {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+footer .f-bottom .f-b-item-3 {
+    margin-top: 60px;
+}
+
+footer .f-bottom .f-b-item-3 > ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+footer .f-bottom .f-b-item-4 {
+    padding-top: 50px;
+    padding-bottom: 70px;
+}
+
+@media screen and (max-width: 780px) {
+    footer * {
+        font-size: 12px !important;
+    }
+
+    footer .f-bottom .f-b-item-1 > ul {
+        width: 100%;        
+    }
+
+    footer .f-bottom .f-b-item-1 .img-box {
+        display: none;
+    }
+
+    footer .f-bottom .f-b-item-2 > ul > li > a > img {    
+        width: 25px;
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    footer .f-top span {
+        margin-right: 15px;
+    }
+
+    footer .f-bottom .f-b-item-1 > ul {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 30px;
+        column-gap: 10px;
+    }
+
+    footer .f-bottom .f-b-item-1 {
+        margin-bottom: 0;
+    }
+    
+    footer .f-bottom .f-b-item-1 > ul p {
+        margin-bottom: 10px;
+    }
+
+    footer .f-bottom .f-b-item-3 {
+        margin-top: 40px;
+    }
+
+    footer .f-bottom .f-b-item-3 > ul {
+        justify-content: flex-start;
+        gap: 10px 20px;        
+    }
+}
+
+/* footer끝 */

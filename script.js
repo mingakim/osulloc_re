@@ -109,7 +109,6 @@ $(document).ready(function () {
 					item.classList.add('aos-animate');
 				},
                 onLeaveBack: () => {
-                    // 페이지 스크롤을 위로 되돌리면 클래스를 제거
                     item.classList.remove('aos-animate');
                 }
 			}
@@ -213,14 +212,13 @@ $(document).ready(function () {
         
             // ScrollTrigger 연결
             ScrollTrigger.create({
-            animation: sec3Timeline,
-            trigger: ".sec-3 .main",
-            start: "top 15%",
-            end: `+=${items.length * 1000}`,
-            scrub: 1,
-            pin: true,
-            scroller: '.scroller',
-            // markers: true,
+                animation: sec3Timeline,
+                trigger: ".sec-3 .main",
+                start: "top 15%",
+                end: `+=${items.length * 1000}`,
+                scrub: 1,
+                pin: true,
+                scroller: '.scroller',
             });
         }
     });
@@ -297,6 +295,12 @@ $(document).ready(function () {
 
 
 
-
+// footer 공지사항 scroll
+setInterval(function() {
+    $('footer .f-top > ul').animate({top: '-=24px'}, 500, function() {
+        $(this).append($(this).children().first());
+        $(this).css('top', 0);
+    });
+}, 3000);
 
 
