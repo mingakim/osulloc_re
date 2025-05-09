@@ -46,22 +46,24 @@ $(document).ready(function () {
 
     
     // h-top사라짐
-    var lastScrollTop = 0;  // lastScrollTop 초기화
-    bodyScrollBar.addListener(function () {  
+    bodyScrollBar.addListener(function () {
         const st = bodyScrollBar.scrollTop;
-
-        // 최상단일 때만 up 클래스 제거
+        const triggerPoint = window.innerHeight * 0.7;
+    
+        // header.up은 계속 적용
         if (st === 0) {
             $('header').removeClass('up');
-        } 
-        else {
-            // 최상단이 아닐 때는 항상 up 클래스를 추가
+        } else {
             $('header').addClass('up');
         }
-
-        // 마지막 스크롤 위치 업데이트
-        lastScrollTop = st;
-    })
+    
+        // 100vh 이상일 때만 .h-main에 header-visible 클래스 추가
+        if (st >= triggerPoint) {
+            $('header .h-main').addClass('bg-show');
+        } else {
+            $('header .h-main').removeClass('bg-show');
+        }
+    });
 
 
     // 비디오 썸네일
@@ -230,23 +232,20 @@ $(document).ready(function () {
     //sec-4 스와이퍼
     var swiper2 = new Swiper('.timeline-swiper', {
         slidesPerView: 'auto',
-        spaceBetween: -60,
         slidesOffsetAfter: 150, //margin-left값, 음수값 때문에 잘려서 마지막 슬라이드에 공간주기
         breakpoints: {
-            440: {
-                spaceBetween: -100,
-            },
-
             780: {
-                spaceBetween: -80,
                 slidesOffsetAfter: 300, 
             },
 
             990: {
-                spaceBetween: -100,
                 slidesOffsetAfter: 350,
             }
-        }
+        },
+        scrollbar: {
+            el: '.sec-4 .swiper-scrollbar',
+            draggable: true, 
+        },
     });
 
     // sec-4 line
