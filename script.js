@@ -11,7 +11,7 @@ $(document).ready(function () {
         speed: 10,
         damping: 0.05,
         mobile: {
-            speed: 0.6
+            speed: 3
         }
     });
 
@@ -297,7 +297,7 @@ $(document).ready(function () {
 
 // footer 공지사항 scroll
 setInterval(function() {
-    $('footer .f-top > ul').animate({top: '-=24px'}, 500, function() {
+    $('footer .f-top > ul').animate({top: '-=21px'}, 500, function() {
         $(this).append($(this).children().first());
         $(this).css('top', 0);
     });
