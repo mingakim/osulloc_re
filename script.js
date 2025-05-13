@@ -57,7 +57,7 @@ $(document).ready(function () {
             $('header').addClass('up');
         }
     
-        // 100vh 이상일 때만 .h-main에 header-visible 클래스 추가
+        // 70vh 이상일 때만 .h-main에 header-visible 클래스 추가
         if (st >= triggerPoint) {
             $('header .h-main').addClass('bg-show');
         } else {
